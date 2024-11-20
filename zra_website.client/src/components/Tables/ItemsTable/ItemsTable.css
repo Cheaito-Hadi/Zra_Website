@@ -1,0 +1,21 @@
+.imported-items-title {
+    font-size: 1.5rem;
+    color: #3c4858;
+    font-weight: bold;
+    margin: 0;
+}
+
+.imported-items-description {
+    color: #6b7280;
+    font-size: 1rem;
+    font-weight: normal;
+    margin-top: 0.25rem;
+}
+
+.table-container {
+    height: 410px;
+}
+
+.table-row-hover:hover {
+    background-color: #f1f5f9;
+}

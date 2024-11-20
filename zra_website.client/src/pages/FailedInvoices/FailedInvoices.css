@@ -1,0 +1,13 @@
+.overflow-scroll {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}

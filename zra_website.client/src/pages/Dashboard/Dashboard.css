@@ -1,0 +1,42 @@
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    height: 100vh;
+}
+
+.left-chart,
+.right-chart {
+    flex: 1;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-chart {
+    height: 80%;
+}
+
+.right-chart {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.doughnut-container {
+    width: 80%;
+    height: 100%;
+}
+.dashboard-heading {
+    font-size: 32px;
+    font-weight: 900;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+

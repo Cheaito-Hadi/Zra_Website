@@ -1,0 +1,94 @@
+.search-filter-container {
+    display: flex;
+    gap: 1rem;
+    padding: 10px;
+    border: 1px solid #f8f8f8;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.approved-invoices-container {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.invoices-table-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.invoices-table-description {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+thead th {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tbody td {
+    border-bottom: 1px solid #f1f1f1;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.approved-summary-title {
+    font-size: 1.5rem;
+    color: #3c4858;
+    font-weight: bold;
+    margin: 0;
+}
+
+.approved-summary-description {
+    color: #6b7280;
+    font-size: 1rem;
+    font-weight: normal;
+    margin-top: 0.25rem;
+}
+
+.uploaded-button {
+    background-color: #d8ebd8;
+    color: #276437;
+}
+
+.pending-button {
+    background-color: #fbf7d4;
+    color: #f89a3c;
+}
+
+.failed-button {
+    background-color: #f9d6d4;
+    color: #c0302e;
+}
+
+.approved-invoices-container-fixed {
+    height: 725px;
+}
+
+.approved-invoices-container-fixed table tbody tr:hover {
+    background-color: #e3f2fd;
+}
+
+.invoice-table-cell {
+    color: #4b5563;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+

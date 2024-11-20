@@ -1,0 +1,58 @@
+.open-modal-btn {
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.open-modal-btn:hover {
+    background-color: #0056b3;
+}
+
+.invoices-modal {
+    background-color: #f9f9f9;
+    color: #333;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.modal-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-body {
+    padding: 16px;
+}
+
+.modal-details {
+    gap: 10px 20px;
+    font-size: 1rem;
+}
+
+.modal-details p {
+    margin: 0;
+}
+
+.modal-details strong {
+    color: #007BFF;
+}
+
+.cancel-btn, .confirm-btn {
+    padding: 8px 16px;
+    font-weight: bold;
+}
+
+.cancel-btn {
+    color: #e81f23;
+    transition: color 0.3s ease;
+}
+
+.cancel-btn:hover {
+    color: #a5171a;
+}

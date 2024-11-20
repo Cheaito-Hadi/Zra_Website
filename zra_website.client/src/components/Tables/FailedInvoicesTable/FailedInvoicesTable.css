@@ -1,0 +1,23 @@
+.failed-invoices-title {
+    font-size: 1.5rem;
+    color: #3c4858;
+    font-weight: bold;
+    margin: 0;
+}
+
+.failed-invoices-description {
+    color: #6b7280;
+    font-size: 1rem;
+    font-weight: normal;
+    margin-top: 0.25rem;
+}
+
+.card-body-fixed-height {
+    height: 400px;
+}
+
+.table-row-hover:hover {
+    background-color: #f1f5f9;
+}
+
+
