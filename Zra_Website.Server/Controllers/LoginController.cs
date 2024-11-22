@@ -28,7 +28,7 @@ namespace Zra_Website.Server.Controllers
             if (user == null)
                 return Unauthorized("Invalid credentials.");
 
-            // user.Active = "Active";
+            // user.Active = true;
             // _context.Users.Update(user);
             // await _context.SaveChangesAsync();
 
