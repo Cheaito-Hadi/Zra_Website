@@ -47,4 +47,22 @@ public class InvoicesController : ControllerBase
 
         return Ok(processedInvoices);
     }
+
+    [HttpGet("FailedInvoices")]
+    public async Task<IActionResult> GetFailedInvoices()
+    {
+        var failedInvoices = await (from header in _context.SalesTransHeader
+                                    join lines in _context.SalesTransLines
+                                    on header.cisInvcNo equals lines.cisInvcNo
+                                    where header.ResultMsg != "It is succeeded" && header.ResultMsg != null
+                                    select new
+                                    {
+                                        InvoiceNumber = lines.cisInvcNo,
+                                        ErrorMessage = header.ResultMsg,
+                                        Date = header.vsdcRcptPbctDate
+                                    })
+                              .ToListAsync();
+
+        return Ok(failedInvoices);    
+    }
 }
