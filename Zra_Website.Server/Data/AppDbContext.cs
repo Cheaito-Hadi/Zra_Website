@@ -9,4 +9,6 @@ public class AppDbContext : DbContext
 
     public DbSet<User> Users { get; set; }
     public DbSet<SalesTransHeader> SalesTransHeader { get; set; }
+    public DbSet<SalesTransLines> SalesTransLines { get; set; }
+
 }
