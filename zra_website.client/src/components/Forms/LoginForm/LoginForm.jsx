@@ -3,6 +3,7 @@ import Button from "../../Base/Button/Button.jsx";
 import CustomInput from "../../Base/Input/Input.jsx";
 import { requestHandler } from "../../../api/axios.js";
 import companyLogoBlack from "../../../assets/SVGs/LamasatLogo-Black.svg";
+import { useNavigate } from "react-router-dom";
 import './LoginForm.css';
 
 const LoginForm = () => {
@@ -10,6 +11,7 @@ const LoginForm = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,15 +31,16 @@ const LoginForm = () => {
                 },
             });
 
-            localStorage.setItem("token", response.Token);
+            localStorage.setItem("token", response.token);
+            localStorage.setItem("first name", response.firstName);
 
             setSuccess(response.Message);
             setError("");
-            console.log("Login Successful:", response);
+
+            navigate("/dashboard");
         } catch (err) {
             setError(err.message);
             setSuccess("");
-            console.error("Login failed:", err.message);
         }
     };
 
