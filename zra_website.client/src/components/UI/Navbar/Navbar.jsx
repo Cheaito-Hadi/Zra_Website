@@ -12,6 +12,8 @@ export function Navbar() {
         year: "numeric",
     });
 
+    const firstName = localStorage.getItem("first name") || "User";
+
     return (
         <div className="navbar-container">
             <div className="flex items-center">
@@ -21,7 +23,7 @@ export function Navbar() {
 
             <div className="flex items-center space-x-4">
                 <Typography variant="h6" className="welcome-text">
-                    Welcome Hadi!
+                    Welcome, {firstName} n 
                 </Typography>
                 <Typography variant="h6" className="date-text">
                     Date: {currentDate}

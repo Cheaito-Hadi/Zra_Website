@@ -11,9 +11,10 @@ import {
     CardFooter,
     Card
 } from "@material-tailwind/react";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import InvoicesInfoModal from "../../UI/Modals/InvoicesInfoModal/InvoicesInfoModal.jsx";
 import "./ApprovedInvoicesTable.css";
+import { requestHandler } from "../../../api/axios.js";
 
 const TABS = [
     {label: "All Invoices", value: "all"},
@@ -27,22 +28,6 @@ const TABLE_HEAD = ["ID", "Amount", "Type", "Status", "Date", "Details", "Action
 const TABLE_ROWS = [
     {id: "IN68241", amount: "$4.41", type: "Sale", status: "Uploaded", date: "09/30/2024, 10:18:52 AM"},
     {id: "IN68240", amount: "$4.41", type: "Sale", status: "Pending", date: "09/30/2024, 10:18:55 AM"},
-    {id: "IN68247", amount: "$4.41", type: "Sale", status: "Canceled", date: "09/30/2024, 10:18:52 AM"},
-    {id: "IN68248", amount: "$4.41", type: "Sale", status: "Canceled", date: "09/30/2024, 10:18:55 AM"},
-    {id: "IN68246", amount: "$4.41", type: "Sale", status: "Pending", date: "09/30/2024, 10:18:52 AM"},
-    {id: "Ii68243", amount: "$4.41", type: "Sale", status: "Uploaded", date: "09/30/2024, 10:18:55 AM"},
-    {id: "Iu68241", amount: "$4.41", type: "Sale", status: "Uploaded", date: "09/30/2024, 10:18:52 AM"},
-    {id: "Iy68240", amount: "$4.41", type: "Sale", status: "Pending", date: "09/30/2024, 10:18:55 AM"},
-    {id: "It68247", amount: "$4.41", type: "Sale", status: "Canceled", date: "09/30/2024, 10:18:52 AM"},
-    {id: "Ir68248", amount: "$4.41", type: "Sale", status: "Pending", date: "09/30/2024, 10:18:55 AM"},
-    {id: "Ie68246", amount: "$4.41", type: "Sale", status: "Pending", date: "09/30/2024, 10:18:52 AM"},
-    {id: "Iw68243", amount: "$4.41", type: "Sale", status: "Pending", date: "09/30/2024, 10:18:55 AM"},
-    {id: "Iq68241", amount: "$4.41", type: "Sale", status: "Pending", date: "09/30/2024, 10:18:52 AM"},
-    {id: "Is68240", amount: "$4.41", type: "Sale", status: "Pending", date: "09/30/2024, 10:18:55 AM"},
-    {id: "Ia68247", amount: "$4.41", type: "Sale", status: "Pending", date: "09/30/2024, 10:18:52 AM"},
-    {id: "Iz68248", amount: "$4.41", type: "Sale", status: "Pending", date: "09/30/2024, 10:18:55 AM"},
-    {id: "Ix68246", amount: "$4.41", type: "Sale", status: "Pending", date: "09/30/2024, 10:18:52 AM"},
-    {id: "Im68243", amount: "$4.41", type: "Sale", status: "Pending", date: "09/30/2024, 10:18:55 AM"},
 ];
 
 const INVOICE_DETAILS = {
@@ -62,6 +47,30 @@ const ApprovedInvoicesTable = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedTab, setSelectedTab] = useState("all");
     const [searchQuery, setSearchQuery] = useState("");
+    const [invoices, setInvoices] = useState([]);
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
+
+    const fetchProcessedInvoices = async () => {
+        try {
+            const response = await requestHandler({
+                method: "GET",
+                route: "/Invoices/ProcessedInvoices", 
+            });
+
+            console.log(response);
+            setInvoices(response);
+            setSuccess("Invoices fetched successfully.");
+            setError("");
+        } catch (err) {
+            setError(`Error fetching processed invoices: ${err.message}`);
+            setSuccess("");
+        }
+    };
+
+    useEffect(() => {
+        fetchProcessedInvoices();
+    }, []);
 
     const startIndex = (currentPage - 1) * ROWS_PER_PAGE;
     const endIndex = startIndex + ROWS_PER_PAGE;
