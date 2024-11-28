@@ -1,13 +1,13 @@
 .login-right {
     width: 65%;
     position: relative;
-    background-image: url('../../../assets/Pictures/pic3.png');
+    background-image: url('../../../assets/Pictures/LamasatHQ.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     color: #ffffff;
     text-align: center;
