@@ -62,12 +62,21 @@ const ItemsTable = () => {
             selectedTab === "all" ||
             (selectedTab === "uploaded" && row.syncStatus === "Posted") ||
             (selectedTab === "pending" && row.syncStatus !== "Posted");
-        const matchesSearch = row.itemCd.includes(searchQuery);
-        return matchesTab && matchesSearch;
+
+        return matchesTab;
     });
 
-    const currentRows = filteredRows.slice(startIndex, endIndex);
-    const totalPages = Math.ceil(filteredRows.length / ROWS_PER_PAGE);
+    const searchedRows = filteredRows.filter((row) => {
+        const declarationNo = String(row.itemClsCd);
+        return declarationNo.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+
+
+
+
+
+    const currentRows = searchedRows.slice(startIndex, endIndex);
+    const totalPages = Math.ceil(searchedRows.length / ROWS_PER_PAGE);
 
     const handleNextPage = () => {
         if (currentPage < totalPages) setCurrentPage((prevPage) => prevPage + 1);
@@ -79,12 +88,7 @@ const ItemsTable = () => {
 
     const handleTabChange = (value) => {
         setSelectedTab(value);
-        setCurrentPage(1);
-    };
-
-    const handleSearchChange = (event) => {
-        setSearchQuery(event.target.value);
-        setCurrentPage(1);
+        setCurrentPage(1); 
     };
 
     return (
@@ -115,8 +119,8 @@ const ItemsTable = () => {
                                                 value === "uploaded" ? "#276437" :
                                                     value === "pending" ? "#f89a3c" : "#000",
                                         border: `1px solid ${value === "all" ? "#2296f2" :
-                                                value === "uploaded" ? "#276437" :
-                                                    value === "pending" ? "#f89a3c" : "transparent"
+                                            value === "uploaded" ? "#276437" :
+                                                value === "pending" ? "#f89a3c" : "transparent"
                                             }`,
                                     }}
                                     onClick={() => handleTabChange(value)}
@@ -127,10 +131,10 @@ const ItemsTable = () => {
                         </div>
                         <div className="w-full md:w-72 flex items-center gap-2">
                             <Input
-                                label="Search"
+                                label="Search by Declaration No."
                                 icon={<MagnifyingGlassIcon className="h-5 w-5" />}
                                 value={searchQuery}
-                                onChange={handleSearchChange}
+                                onChange={(e) => setSearchQuery(e.target.value)}
                             />
                             <Button variant="text" color="blue-gray">
                                 <ArrowPathIcon className="h-5 w-5" />
@@ -157,7 +161,7 @@ const ItemsTable = () => {
                             <tr key={row.itemCd} className="table-row-hover">
                                 <td className="p-4 text-blue-gray-700">{row.itemClsCd}</td>
                                 <td className="p-4 text-blue-gray-700">{row.rsdQty}</td>
-                                <td className="p-4 text-blue-gray-700">{row.itemClsCd}</td>
+                                <td className="p-4 text-blue-gray-700">{row.itemCd}</td>
                                 <td className="p-4 text-blue-gray-700">{row.itemNm}</td>
                                 <td className="p-4">
                                     <Chip
