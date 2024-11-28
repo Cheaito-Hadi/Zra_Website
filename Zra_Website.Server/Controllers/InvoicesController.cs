@@ -59,7 +59,8 @@ public class InvoicesController : ControllerBase
                                     {
                                         InvoiceNumber = lines.cisInvcNo,
                                         ErrorMessage = header.ResultMsg,
-                                        Date = header.vsdcRcptPbctDate
+                                        Date = header.vsdcRcptPbctDate,
+                                        SdcId = header.sdcId,
                                     })
                               .ToListAsync();
 

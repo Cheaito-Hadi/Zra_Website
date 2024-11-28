@@ -39,8 +39,6 @@ const ItemsTable = () => {
                 method: "GET",
                 route: "/Items/AllItems",
             });
-
-            console.log(response);
             setItems(response);
             setSuccess("Items fetched successfully.");
             setError("");
@@ -72,9 +70,6 @@ const ItemsTable = () => {
     });
 
 
-
-
-
     const currentRows = searchedRows.slice(startIndex, endIndex);
     const totalPages = Math.ceil(searchedRows.length / ROWS_PER_PAGE);
 
@@ -89,6 +84,11 @@ const ItemsTable = () => {
     const handleTabChange = (value) => {
         setSelectedTab(value);
         setCurrentPage(1); 
+    };
+
+    const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value); 
+        setCurrentPage(1);
     };
 
     return (
@@ -134,7 +134,7 @@ const ItemsTable = () => {
                                 label="Search by Declaration No."
                                 icon={<MagnifyingGlassIcon className="h-5 w-5" />}
                                 value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
+                                onChange={handleSearchChange}
                             />
                             <Button variant="text" color="blue-gray">
                                 <ArrowPathIcon className="h-5 w-5" />

@@ -31,7 +31,7 @@ namespace Zra_Website.Server.Models
         public string? intrlData { get; set; } = null;
         public string? rcptSign { get; set; } = null;
         public string? vsdcRcptPbctDate { get; set; } = null;
-        //public string? sdcId { get; set; } = null;    
+        public string? sdcId { get; set; } = null;
         //public string? mrcNo { get; set; } = null;    
         public string? qrCodeUrl { get; set; } = null;
     }
