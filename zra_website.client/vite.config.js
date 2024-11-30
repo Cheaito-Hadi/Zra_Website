@@ -46,12 +46,6 @@ export default defineConfig({
         }
     },
     server: {
-        proxy: {
-            '^/weatherforecast': {
-                target,
-                secure: false
-            }
-        },
         port: 51968,
         https: {
             key: fs.readFileSync(keyFilePath),

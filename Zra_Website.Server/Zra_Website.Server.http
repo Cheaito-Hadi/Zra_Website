@@ -1,6 +1,6 @@
 @Zra_Website.Server_HostAddress = http://localhost:5023
 
-GET {{Zra_Website.Server_HostAddress}}/weatherforecast/
+GET {{Zra_Website.Server_HostAddress}}
 Accept: application/json
 
 ###

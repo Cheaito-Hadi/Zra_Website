@@ -21,7 +21,6 @@ const TABS = [
     {label: "All Invoices", value: "all"},
     {label: "Successful Invoices", value: "successful"},
     {label: "Pending Invoices", value: "pending"},
-    {label: "Failed Invoices", value: "failed"},
 ];
 
 const TABLE_HEAD = ["ID", "Amount", "Type", "Status", "Date", "Details", "Action"];
@@ -86,7 +85,6 @@ const ApprovedInvoicesTable = () => {
         if (selectedTab === "all") return true;
         if (selectedTab === "successful") return row.status === "Uploaded";
         if (selectedTab === "pending") return row.status === "Pending";
-        if (selectedTab === "failed") return row.status === "Canceled";
         return false;
     }).filter((row) =>
         row.id.toLowerCase().includes(searchQuery.toLowerCase())
@@ -137,20 +135,17 @@ const ApprovedInvoicesTable = () => {
                                     backgroundColor: selectedTab === value
                                         ? value === "all" ? "#2296f2" :
                                             value === "successful" ? "#276437" :
-                                                value === "pending" ? "#f89a3c" :
-                                                    value === "failed" ? "#c0302e" : "transparent"
+                                                value === "pending" ? "#f89a3c" : "transparent"
                                         : "transparent",
                                     color: selectedTab === value
                                         ? "#fff"
                                         : value === "all" ? "#2296f2" :
                                             value === "successful" ? "#276437" :
-                                                value === "pending" ? "#f89a3c" :
-                                                    value === "failed" ? "#c0302e" : "#000",
+                                                value === "pending" ? "#f89a3c" : "#000",
                                     border: `1px solid ${
                                         value === "all" ? "#2296f2" :
                                             value === "successful" ? "#276437" :
-                                                value === "pending" ? "#f89a3c" :
-                                                    value === "failed" ? "#c0302e" : "transparent"
+                                                value === "pending" ? "#f89a3c" : "transparent"
                                     }`
                                 }}
                                 onClick={() => handleTabChange(value)}
