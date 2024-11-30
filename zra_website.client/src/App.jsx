@@ -7,6 +7,7 @@ import ProcessedInvoices from './pages/ProcessedInvoices/ProcessedInvoices.jsx';
 import FailedInvoices from './pages/FailedInvoices/FailedInvoices.jsx';
 import ItemsManagement from './pages/ItemsManagement/ItemsManagement.jsx';
 import Branches from "./pages/Branches/Branches.jsx";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
     const location = useLocation();
@@ -16,11 +17,13 @@ function App() {
             {location.pathname !== '/' && <Navbar />}
             <Routes>
                 <Route path="/" element={<Login />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/processed-invoices" element={<ProcessedInvoices />} />
-                <Route path="/failed-invoices" element={<FailedInvoices />} />
-                <Route path="/items-management" element={<ItemsManagement />} />
-                <Route path="/branches" element={<Branches />} />
+                <Route element={<ProtectedRoute />}>
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/processed-invoices" element={<ProcessedInvoices />} />
+                    <Route path="/failed-invoices" element={<FailedInvoices />} />
+                    <Route path="/items-management" element={<ItemsManagement />} />
+                    <Route path="/branches" element={<Branches />} />
+                </Route>
             </Routes>
         </div>
     );

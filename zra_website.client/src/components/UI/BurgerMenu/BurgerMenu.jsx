@@ -1,5 +1,5 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
     IconButton,
     Typography,
@@ -44,13 +44,21 @@ export function SidebarWithBurgerMenu() {
         closeDrawer();
     };
 
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("firstName");
+
+        navigate("/", { replace: true });
+        closeDrawer();
+    };
+
     return (
         <>
             <IconButton variant="text" size="lg" onClick={openDrawer} color="black">
                 {isDrawerOpen ? (
-                    <XMarkIcon className="h-8 w-8 stroke-2"/>
+                    <XMarkIcon className="h-8 w-8 stroke-2" />
                 ) : (
-                    <Bars3Icon className="h-8 w-8 stroke-2"/>
+                    <Bars3Icon className="h-8 w-8 stroke-2" />
                 )}
             </IconButton>
             <Drawer open={isDrawerOpen} onClose={closeDrawer}>
@@ -60,13 +68,13 @@ export function SidebarWithBurgerMenu() {
                     className="h-[calc(100vh-2rem)] w-full p-4"
                 >
                     <div className="mb-2 flex items-center gap-4 p-2">
-                        <img src={companyLogoBlack} alt="Company Logo" className="logo-burger"/>
+                        <img src={companyLogoBlack} alt="Company Logo" className="logo-burger" />
                     </div>
-                    <hr className="my-2 border-blue-gray-100"/>
+                    <hr className="my-2 border-blue-gray-100" />
                     <List>
                         <ListItem onClick={() => handleNavigation('/dashboard')}>
                             <ListItemPrefix>
-                                <DocumentChartBarIcon className="h-5 w-5" color="blue-gray"/>
+                                <DocumentChartBarIcon className="h-5 w-5" color="blue-gray" />
                             </ListItemPrefix>
                             Dashboard
                         </ListItem>
@@ -76,9 +84,8 @@ export function SidebarWithBurgerMenu() {
                             icon={
                                 <ChevronDownIcon
                                     strokeWidth={2.5}
-                                    className={`mx-auto h-4 w-4 transition-transform ${
-                                        open === 2 ? "rotate-180" : ""
-                                    }`}
+                                    className={`mx-auto h-4 w-4 transition-transform ${open === 2 ? "rotate-180" : ""
+                                        }`}
                                     color="blue-gray"
                                 />
                             }
@@ -89,7 +96,7 @@ export function SidebarWithBurgerMenu() {
                                     className="border-b-0 p-3"
                                 >
                                     <ListItemPrefix>
-                                        <DocumentDuplicateIcon className="h-5 w-5" color="blue-gray"/>
+                                        <DocumentDuplicateIcon className="h-5 w-5" color="blue-gray" />
                                     </ListItemPrefix>
                                     <Typography color="blue-gray" className="mr-auto font-normal">
                                         Invoices
@@ -100,13 +107,13 @@ export function SidebarWithBurgerMenu() {
                                 <List className="p-0">
                                     <ListItem onClick={() => handleNavigation('/processed-invoices')}>
                                         <ListItemPrefix>
-                                            <ChevronRightIcon strokeWidth={3} className="h-3 w-5" color="blue-gray"/>
+                                            <ChevronRightIcon strokeWidth={3} className="h-3 w-5" color="blue-gray" />
                                         </ListItemPrefix>
                                         Processed Invoices
                                     </ListItem>
                                     <ListItem onClick={() => handleNavigation('/failed-invoices')}>
                                         <ListItemPrefix>
-                                            <ChevronRightIcon strokeWidth={3} className="h-3 w-5" color="blue-gray"/>
+                                            <ChevronRightIcon strokeWidth={3} className="h-3 w-5" color="blue-gray" />
                                         </ListItemPrefix>
                                         Failed Invoices
                                     </ListItem>
@@ -115,22 +122,22 @@ export function SidebarWithBurgerMenu() {
                         </Accordion>
                         <ListItem onClick={() => handleNavigation('/items-management')}>
                             <ListItemPrefix>
-                                <CubeIcon className="h-5 w-5"/>
+                                <CubeIcon className="h-5 w-5" />
                             </ListItemPrefix>
                             Items Management
                         </ListItem>
                         <ListItem onClick={() => handleNavigation('/branches')}>
                             <ListItemPrefix>
-                                <BuildingOffice2Icon className="h-5 w-5"/>
+                                <BuildingOffice2Icon className="h-5 w-5" />
                             </ListItemPrefix>
                             Branches
                         </ListItem>
 
-                        <hr className="my-2 border-blue-gray-100"/>
+                        <hr className="my-2 border-blue-gray-100" />
 
-                        <ListItem>
+                        <ListItem onClick={handleLogout}>
                             <ListItemPrefix>
-                                <PowerIcon className="h-5 w-5" color="red"/>
+                                <PowerIcon className="h-5 w-5" color="red" />
                             </ListItemPrefix>
                             <Typography color="red">Logout</Typography>
                         </ListItem>
