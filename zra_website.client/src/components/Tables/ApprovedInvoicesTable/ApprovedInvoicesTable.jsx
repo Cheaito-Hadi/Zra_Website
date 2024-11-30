@@ -1,6 +1,7 @@
 import {
     MagnifyingGlassIcon,
     ArrowDownTrayIcon,
+    ArrowPathIcon,
 } from "@heroicons/react/24/outline";
 import {
     Input,
@@ -71,6 +72,12 @@ const ApprovedInvoicesTable = () => {
     useEffect(() => {
         fetchProcessedInvoices();
     }, []);
+
+    const handleRefresh = () => {
+        setCurrentPage(1);
+        setSearchQuery("");
+        fetchProcessedInvoices();
+    };
 
     const startIndex = (currentPage - 1) * ROWS_PER_PAGE;
     const endIndex = startIndex + ROWS_PER_PAGE;
@@ -161,6 +168,13 @@ const ApprovedInvoicesTable = () => {
                             onChange={handleSearchChange}
                         />
                     </div>
+                    <Button
+                        variant="text"
+                        color="blue-gray"
+                        onClick={handleRefresh}
+                    >
+                        <ArrowPathIcon className="h-5 w-5" />
+                    </Button>
                 </div>
 
                 <table className="w-full min-w-max table-auto text-left overflow-hidden">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./FailedInvoicesTable.css";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
 import {
     Card,
     CardHeader,
@@ -40,6 +40,16 @@ const FailedInvoicesTable = () => {
         }
     };
 
+    useEffect(() => {
+        fetchFailedInvoices();
+    }, []);
+
+    const handleRefresh = () => {
+        setCurrentPage(1);
+        setSearchQuery("");
+        fetchFailedInvoices();
+    };
+
     const formatDate = (dateString) => {
         const date = new Date(
             dateString.slice(0, 4), 
@@ -52,9 +62,6 @@ const FailedInvoicesTable = () => {
         return date.toLocaleString();
     };
 
-    useEffect(() => {
-        fetchFailedInvoices();
-    }, []);
 
     const filteredRows = failedInvoices.filter((row) =>
         row.invoiceNumber.toLowerCase().includes(searchQuery.toLowerCase())
@@ -101,6 +108,13 @@ const FailedInvoicesTable = () => {
                                 onChange={handleSearchChange}
                             />
                         </div>
+                        <Button
+                            variant="text"
+                            color="blue-gray"
+                            onClick={handleRefresh}
+                        >
+                            <ArrowPathIcon className="h-5 w-5" />
+                        </Button>
                     </div>
                 </div>
             </CardHeader>
