@@ -33,7 +33,6 @@ namespace Zra_Website.Server.Controllers
             if (user == null)
                 return Unauthorized("Invalid credentials.");
 
-            // Generate JWT token
             var token = GenerateJwtToken(user);
 
             return Ok(new
@@ -43,6 +42,15 @@ namespace Zra_Website.Server.Controllers
                 FirstName = user.FName,
                 Status = user.Active,
                 Token = token
+            });
+        }
+
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            return Ok(new
+            {
+                Message = "Logout successful"
             });
         }
 
