@@ -171,7 +171,6 @@ const ApprovedInvoicesTable = () => {
                         <ArrowPathIcon className="h-5 w-5" />
                     </Button>
                 </div>
-
                 <table className="w-full min-w-max table-auto text-left overflow-hidden">
                     <thead>
                     <tr>

@@ -7,7 +7,7 @@ import './ProcessedInvoices.css';
 const ProcessedInvoices = () => {
     return (
         <div>
-            <ApprovedInvoicesSummary/>
+            {/*<ApprovedInvoicesSummary/>*/}
             <ApprovedInvoicesTable/>
         </div>
     );
